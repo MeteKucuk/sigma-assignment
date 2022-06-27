@@ -23,6 +23,7 @@ class _BodyState extends State<Body> {
   bool checkDataIndicator = false;
 
   bool stopFetch = false;
+  final controller = TextEditingController();
 
   final ValueNotifier<bool> isActive = ValueNotifier(true);
   List<CommentsModel> comments = [];
@@ -124,6 +125,15 @@ class _BodyState extends State<Body> {
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               child: CupertinoSearchTextField(
+                controller: controller,
+                onSuffixTap: () {
+                  setState(() {
+                    controller.text = "";
+                    stopFetch = false;
+
+                    comments = _api.results;
+                  });
+                },
                 padding: const EdgeInsets.all(15),
                 onChanged: searchComment,
               ),
