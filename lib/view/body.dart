@@ -191,11 +191,12 @@ class _BodyState extends State<Body> {
           ],
         ),
         leading: Text(comments.id.toString(),
-            style: TextStyle(color: CupertinoColors.black)),
+            style: const TextStyle(color: CupertinoColors.black)),
         subtitle: Padding(
           padding: const EdgeInsets.all(3.0),
-          child: Text("${comments.body.toString()}",
-              style: TextStyle(color: CupertinoColors.black, fontSize: 19)),
+          child: Text(comments.body.toString(),
+              style:
+                  const TextStyle(color: CupertinoColors.black, fontSize: 19)),
         ),
       );
 
