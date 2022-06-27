@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class Header extends StatelessWidget {
   const Header({
     Key? key,
-    required ValueNotifier<bool> isActive,
-  })  : _isActive = isActive,
-        super(key: key);
+    required this.isActive,
+    required this.onpress,
+  }) : super(key: key);
 
-  final ValueNotifier<bool> _isActive;
+  final bool isActive;
+
+  final VoidCallback onpress;
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +30,15 @@ class Header extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ValueListenableBuilder(
-            valueListenable: _isActive,
-            builder: (context, value, child) {
-              return GestureDetector(
-                  onTap: () {
-                    _isActive.value = !_isActive.value;
-                  },
-                  child: _isActive.value
-                      ? Image.asset(
-                          "assets/images/editicon.png",
-                          height: 25,
-                        )
-                      : Image.asset(
-                          "assets/images/editblack.png",
-                          height: 25,
-                        ));
-            },
-          ),
-        )
+          child: GestureDetector(
+              onTap: onpress,
+              child: Image.asset(
+                isActive
+                    ? "assets/images/editicon.png"
+                    : "assets/images/editblack.png",
+                height: 25,
+              )),
+        ),
       ],
     );
   }

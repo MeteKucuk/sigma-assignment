@@ -35,7 +35,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.4
   grouped_list: ^5.1.2
-  comment_tree: ^0.3.0
+
+  pull_to_refresh: ^2.0.0
 
 dev_dependencies:
   flutter_test:
